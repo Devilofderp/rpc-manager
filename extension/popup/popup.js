@@ -37,7 +37,7 @@ function render({ connected, activities, outdated }) {
     for (const activity of playing) {
         const card = el("div", "card");
         const image = el("img");
-        image.src = activity.assets?.large_image ?? "icon.png";
+        image.src = activity.assets?.large_image ?? "../icon.png";
         const lines = el("div", "lines");
         lines.append(
             el("div", "top", `Watching ${activity.name}`),
