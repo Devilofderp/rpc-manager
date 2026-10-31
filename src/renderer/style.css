@@ -177,6 +177,8 @@ svg {
     font: 600 14px/1 var(--font-display);
 }
 
+.settings h3:not(:first-child) { margin-top: 18px; }
+
 .settings .field label { margin-bottom: 2px; }
 
 .swatches {
@@ -237,6 +239,8 @@ svg {
 }
 
 .settings-row[hidden] { display: none; }
+
+.settings-option { justify-content: space-between; }
 
 /* Our own slider: the bar fills with the accent up to the value, all the way at 100%. */
 .settings input.slider {

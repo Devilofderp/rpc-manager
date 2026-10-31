@@ -4,6 +4,7 @@ contextBridge.exposeInMainWorld("rpc", {
     getState: () => ipcRenderer.invoke("state:get"),
     setPresets: presets => ipcRenderer.send("presets:set", presets),
     setTheme: theme => ipcRenderer.send("theme:set", theme),
+    setMinimizeToTray: on => ipcRenderer.send("minimize-to-tray:set", on),
     appInfo: appId => ipcRenderer.invoke("app:info", appId),
     openLink: url => ipcRenderer.send("link:open", url),
     openExtensionFolder: () => ipcRenderer.send("extension:open"),

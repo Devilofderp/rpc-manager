@@ -47,6 +47,7 @@ let selectedId = null;
 let presence = { status: { state: "connecting" }, live: {} };
 let bridge = { browsers: 0, outdated: false, activities: {} };
 let extensionDir = "";
+let minimizeToTray = false;
 const apps = new Map();     // appId -> info, null (not found) or "pending"
 const timing = new Map();   // preview timer state per preset
 let refs = {};              // elements of the current editor that update in place
@@ -243,6 +244,17 @@ function renderSettings() {
     const glassRow = h("label", { class: "settings-row" }, "See-through", glassSlider, glassValue);
     glassRow.hidden = theme.background !== "glass";
 
+    const minimizeSwitch = h("button", {
+        class: `switch${minimizeToTray ? " on" : ""}`,
+        type: "button",
+        title: "Minimize to the tray",
+        onClick: () => {
+            minimizeToTray = !minimizeToTray;
+            minimizeSwitch.classList.toggle("on", minimizeToTray);
+            window.rpc.setMinimizeToTray(minimizeToTray);
+        }
+    });
+
     existing.replaceChildren(
         h("h3", { text: "Appearance" }),
         h("div", { class: "field" },
@@ -281,7 +293,9 @@ function renderSettings() {
         ),
         h("div", { class: "settings-foot" },
             h("button", { class: "button ghost small", type: "button", onClick: () => setTheme(DEFAULT_THEME, { rebuild: true }) }, "Reset to red and black")
-        )
+        ),
+        h("h3", { text: "Window" }),
+        h("div", { class: "settings-row settings-option" }, "Minimize button goes to the tray", minimizeSwitch)
     );
 }
 
@@ -1108,6 +1122,7 @@ presets = initial.presets;
 presence = initial.presence;
 bridge = initial.bridge;
 extensionDir = initial.extensionDir;
+minimizeToTray = initial.minimizeToTray;
 theme = normalizeTheme(initial.theme);
 glassSupported = initial.glassSupported;
 applyTheme();

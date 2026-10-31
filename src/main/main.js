@@ -105,15 +105,15 @@ function createWindow() {
     });
     win.webContents.on("will-navigate", event => event.preventDefault());
 
-    // Closing or minimizing the window tucks it into the tray and keeps presets live;
-    // quitting from the tray clears them.
+    // Closing the window tucks it into the tray and keeps presets live, and so does
+    // minimizing if that's turned on in Settings; quitting from the tray clears them.
     win.on("close", event => {
         if (quitting) return;
         event.preventDefault();
         hideToTray();
     });
     win.on("minimize", () => {
-        if (tray) hideToTray();
+        if (tray && store.prefs.minimizeToTray) hideToTray();
     });
 }
 
@@ -178,6 +178,7 @@ function registerIpc() {
         theme: currentTheme(),
         titleIcon: icons.titleIcon(currentTheme().accent),
         glassSupported,
+        minimizeToTray: Boolean(store.prefs.minimizeToTray),
         updateReady: updates.ready
     }));
     ipcMain.on("theme:set", (_event, theme) => {
@@ -186,6 +187,7 @@ function registerIpc() {
         applyWindowTheme(currentTheme());
         if (currentTheme().accent !== before) icons.apply(currentTheme().accent, { win, tray }).catch(err => console.error("icon update failed", err));
     });
+    ipcMain.on("minimize-to-tray:set", (_event, on) => store.setPrefs({ minimizeToTray: Boolean(on) }));
     ipcMain.on("extension:open", () => shell.openPath(extensionDir));
     ipcMain.on("update:install", () => updates.install());
     bridge.on("change", snapshot => {
