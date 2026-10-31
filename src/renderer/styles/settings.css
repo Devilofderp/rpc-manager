@@ -1,0 +1,152 @@
+/* Settings: a gear between the Discord pill and the window buttons */
+.icon-button {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    border-radius: calc(9px * var(--round));
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    transition: background 0.15s, color 0.15s;
+}
+
+.icon-button:hover, .icon-button.open { background: var(--surface-hover); color: var(--text); }
+.icon-button svg { width: 18px; height: 18px; }
+
+.settings {
+    position: fixed;
+    top: 50px;
+    right: calc(100vw - env(titlebar-area-width, calc(100vw - 138px)) + 12px);
+    z-index: 30;
+    width: 300px;
+    padding: 16px;
+    border-radius: calc(14px * var(--round));
+    border: 1px solid var(--border-strong);
+    background: var(--popover);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+    animation: fade-in 0.15s var(--ease);
+    -webkit-app-region: no-drag;
+}
+
+.settings h3 {
+    margin: 0 0 12px;
+    font: 600 14px/1 var(--font-display);
+}
+
+.settings h3:not(:first-child) { margin-top: 18px; }
+
+.settings .field label { margin-bottom: 2px; }
+
+.swatches {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.swatch {
+    aspect-ratio: 1;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: var(--swatch);
+    cursor: pointer;
+    transition: transform 0.12s;
+}
+
+.swatch:hover { transform: scale(1.1); }
+.swatch.active { border-color: #fff; box-shadow: 0 0 0 2px var(--swatch); }
+
+.custom-color {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+/* Our own square shows the color; the system picker sits invisibly on top of it. */
+.custom-swatch {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: calc(8px * var(--round));
+    border: 1px solid var(--border-strong);
+    background: var(--accent);
+    cursor: pointer;
+}
+
+.custom-swatch input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.settings-row[hidden] { display: none; }
+
+.settings-option { justify-content: space-between; }
+
+/* Our own slider: the bar fills with the accent up to the value, all the way at 100%. */
+.settings input.slider {
+    flex: 1;
+    height: 6px;
+    margin: 0 4px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: linear-gradient(to right, var(--accent) var(--fill), rgba(255, 255, 255, 0.16) var(--fill));
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.settings input.slider:focus { outline: none; box-shadow: none; }
+
+.settings input.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--accent-glow), 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: transform 0.12s;
+}
+
+.settings input.slider:active::-webkit-slider-thumb { transform: scale(1.15); }
+
+.settings-row .value {
+    width: 34px;
+    text-align: right;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.settings {
+    width: 340px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.settings .segmented button { white-space: nowrap; font-size: 12.5px; }
+
+.settings-foot {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}

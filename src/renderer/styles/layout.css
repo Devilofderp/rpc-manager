@@ -1,0 +1,32 @@
+/* Layout */
+
+.layout {
+    height: calc(100% - 46px);
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr) 380px;
+}
+
+.sidebar,
+.preview-pane {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 6px 14px 16px;
+}
+
+.sidebar { border-right: 1px solid var(--border); }
+.preview-pane { border-left: 1px solid var(--border); padding: 14px 20px; gap: 14px; overflow-y: auto; }
+
+.sidebar-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px 6px;
+}
+
+.sidebar-hint {
+    margin: 0 4px 6px;
+    font-size: 12px;
+    color: var(--faint);
+}

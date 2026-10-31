@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Worker } from "node:worker_threads";
 import { atomPng } from "./atom-icon.js";
-import { DEFAULT_THEME } from "../shared/theme.js";
+import { DEFAULT_THEME } from "../../shared/theme.js";
 
 function drawIco(accent) {
     return new Promise((resolve, reject) => {

@@ -1,0 +1,65 @@
+/* Title bar */
+
+.titlebar {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* Room for the window buttons, which Windows reports through env(titlebar-area-*). */
+    padding: 0 calc(100vw - env(titlebar-area-width, calc(100vw - 138px)) + 12px) 0 16px;
+    -webkit-app-region: drag;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 600 13.5px/1 var(--font-display);
+}
+
+.brand-mark {
+    width: 20px;
+    height: 20px;
+}
+
+.connection {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px 5px 6px;
+    border-radius: calc(999px * var(--round));
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.connection.connected .dot { background: var(--live); }
+.connection.offline .dot { background: var(--danger); }
+.connection.connecting .dot { background: var(--busy); animation: pulse 1.2s ease-in-out infinite; }
+
+@keyframes pulse {
+    50% { opacity: 0.35; }
+}
+
+#update-button { -webkit-app-region: no-drag; }
+#update-button[hidden] { display: none; }
+
+.connection .avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--surface-strong);
+}
+
+.connection .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px 0 6px;
+    border-radius: 50%;
+    background: var(--faint);
+}
+
+.connection.connected { color: var(--text); }

@@ -4,7 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { atomIco, atomPng } from "../src/main/atom-icon.js";
+import { atomIco, atomPng } from "../src/main/appearance/atom-icon.js";
 
 const outDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "src", "assets");
 

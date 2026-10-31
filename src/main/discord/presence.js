@@ -5,8 +5,8 @@
 // sent bottom to top: the top preset is always sent last.
 import { EventEmitter } from "node:events";
 import { ARRPC_USER_ID, runningClient } from "./clients.js";
-import { RpcClient } from "./discord-ipc.js";
-import { appIdOf, blockingErrors, buildActivity, BUILT_IN_APP_ID, sanitizeBrowserActivity, validate } from "../shared/activity.js";
+import { RpcClient } from "./rpc-client.js";
+import { appIdOf, blockingErrors, buildActivity, BUILT_IN_APP_ID, sanitizeBrowserActivity, validate } from "../../shared/activity.js";
 
 const RETRY_MS = 5000;
 // Discord allows about 5 activity updates per 20 seconds per Application, and

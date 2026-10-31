@@ -1,0 +1,208 @@
+/* Editor */
+
+.editor {
+    overflow-y: auto;
+    padding: 14px 28px 40px;
+    user-select: text;
+}
+
+.editor-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    animation: fade-in 0.22s var(--ease);
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+}
+
+.editor-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.title-input {
+    flex: 1;
+    min-width: 0;
+    padding: 4px 8px;
+    margin-left: -8px;
+    border: 1px solid transparent;
+    border-radius: calc(8px * var(--round));
+    background: transparent;
+    color: var(--text);
+    font: 600 22px/1.3 var(--font-display);
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.title-input:hover { background: var(--surface); }
+.title-input:focus { outline: none; border-color: var(--border-strong); background: var(--surface); }
+
+.title-static {
+    flex: 1;
+    padding: 4px 0;
+    font: 600 22px/1.3 var(--font-display);
+}
+
+.lead {
+    margin: -4px 0 12px;
+    color: var(--muted);
+}
+
+.steps {
+    margin: 0 0 12px;
+    padding-left: 20px;
+    color: var(--text);
+}
+
+.steps li { margin-bottom: 6px; }
+.steps li::marker { color: var(--accent-strong); font-weight: 700; }
+
+code {
+    padding: 1px 6px;
+    border-radius: calc(5px * var(--round));
+    background: rgba(0, 0, 0, 0.3);
+    font: 12.5px "Cascadia Mono", Consolas, monospace;
+}
+
+.path-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.path-row .path {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+    border-radius: calc(8px * var(--round));
+    border: 1px solid var(--border-strong);
+    user-select: all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sites {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+.sites li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.sites b { flex-shrink: 0; }
+
+.sites span { color: var(--muted); font-size: 12.5px; }
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: -10px 0 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.status-line .error-text { color: var(--danger); }
+
+.panel {
+    margin-bottom: 14px;
+    padding: 16px 18px 6px;
+    border-radius: calc(14px * var(--round));
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.panel-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font: 600 14px/1 var(--font-display);
+}
+
+.panel-title svg { color: var(--accent-strong); }
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.row.three { grid-template-columns: 2fr 1.4fr 1.4fr; }
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+    min-width: 0;
+}
+
+.field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.field input {
+    height: 36px;
+    padding: 0 11px;
+    border-radius: calc(9px * var(--round));
+    border: 1px solid var(--border-strong);
+    background: rgba(0, 0, 0, 0.22);
+    color: var(--text);
+    font: 13.5px var(--font);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input::placeholder { color: var(--faint); }
+
+.field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field.invalid input { border-color: var(--danger); }
+.field.invalid input:focus { box-shadow: 0 0 0 3px var(--danger-soft); }
+
+.field .hint,
+.field .error {
+    font-size: 11.5px;
+    color: var(--faint);
+}
+
+.field .error { color: var(--danger); display: none; }
+.field.invalid .error { display: block; }
+.field.invalid .hint { display: none; }
+
+.field .hint.ok { color: var(--live); }
+
+.app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.app-badge img {
+    width: 16px;
+    height: 16px;
+    border-radius: calc(4px * var(--round));
+}
+
+.inline-link {
+    color: var(--accent-strong);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.inline-link:hover { text-decoration: underline; }

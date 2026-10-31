@@ -1,0 +1,46 @@
+/* Segmented control */
+
+.segmented {
+    position: relative;
+    display: flex;
+    padding: 3px;
+    border-radius: calc(10px * var(--round));
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border);
+}
+
+.segmented button {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    height: 30px;
+    border: none;
+    border-radius: calc(7px * var(--round));
+    background: transparent;
+    color: var(--muted);
+    font: 500 13px/1 var(--font);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.segmented button:hover { color: var(--text); }
+.segmented button.active { color: #fff; }
+
+.segmented .thumb {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    border-radius: calc(7px * var(--round));
+    background: var(--accent);
+    box-shadow: 0 2px 8px var(--accent-glow);
+    transition: left 0.25s var(--ease), width 0.25s var(--ease);
+}
+
+.duration {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.duration input { width: 80px; }
+.duration span { color: var(--muted); }

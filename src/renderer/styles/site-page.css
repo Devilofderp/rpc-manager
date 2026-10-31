@@ -1,0 +1,115 @@
+/* Site page */
+.site-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: 600 22px/1.3 var(--font-display);
+}
+
+.site-title .site-tile {
+    width: 34px;
+    height: 34px;
+    border-radius: calc(9px * var(--round));
+    font-size: 13px;
+}
+
+.shows {
+    margin: 0 0 12px;
+    padding-left: 18px;
+}
+
+.shows li { margin-bottom: 5px; }
+.shows li::marker { color: var(--accent-strong); }
+
+.editor-preview {
+    max-width: 380px;
+    margin-bottom: 14px;
+}
+
+.preview-empty {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--faint);
+}
+
+.preset-card.selected {
+    background: var(--accent-soft);
+    border-color: var(--accent-line);
+}
+
+.preset-card.dragging {
+    z-index: 10;
+    background: var(--raised);
+    border-color: var(--border-strong);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+    cursor: grabbing;
+    transition: box-shadow 0.2s;
+}
+
+.preset-card.shifting { transition: transform 0.2s var(--ease), background 0.15s; }
+
+.preset-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: calc(9px * var(--round));
+    object-fit: cover;
+    background: var(--surface-strong);
+    display: grid;
+    place-items: center;
+    color: var(--faint);
+    overflow: hidden;
+}
+
+.preset-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.preset-text { min-width: 0; }
+
+.preset-label {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.preset-sub {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.preset-sub span:last-child { overflow: hidden; text-overflow: ellipsis; }
+
+.rank {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: calc(9px * var(--round));
+    background: var(--accent);
+    color: #fff;
+    font: 700 10.5px/18px var(--font);
+    text-align: center;
+    box-shadow: 0 0 0 3px var(--ring);
+}
+
+
+
+.empty {
+    margin: 24px 6px;
+    text-align: center;
+    color: var(--faint);
+}

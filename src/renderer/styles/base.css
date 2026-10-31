@@ -1,0 +1,82 @@
+/* Default theme: red on OLED black. The accent values are replaced from
+   Settings (applyTheme in app.js); the background ones by the body class. */
+:root {
+    color-scheme: dark;
+    --bg: #000;
+    --raised: #121216;
+    --popover: #0d0d10;
+    --ring: #000;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(255, 255, 255, 0.07);
+    --surface-strong: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.13);
+    --text: #ececf2;
+    --muted: #a3a3b4;
+    --faint: #6e6e80;
+    --accent: #ff2a40;
+    --accent-strong: #ff6070;
+    --accent-soft: rgba(255, 42, 64, 0.14);
+    --accent-line: rgba(255, 42, 64, 0.38);
+    --accent-glow: rgba(255, 42, 64, 0.35);
+    --round: 1;          /* corner style: 1 rounded, 0 square */
+    --glass-tint: 0.55;  /* how solid the Glass background is */
+    --live: #3fcf8e;
+    --busy: #f0b232;
+    --danger: #f2545b;
+    --danger-soft: rgba(242, 84, 91, 0.12);
+    --radius: calc(12px * var(--round));
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --font: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+    --font-display: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font: 13.5px/1.45 var(--font);
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.bg-dark {
+    --bg: #131318;
+    --raised: #24232f;
+    --popover: #1e1e26;
+    --ring: #131318;
+}
+
+/* Glass: Windows blurs what's behind the window (main/appearance/blur.js); the page tint on top
+   goes from nearly solid (see-through 0%) to none at all (100%). */
+body.bg-glass {
+    --bg: rgba(12, 12, 16, var(--glass-tint));
+    --raised: #24232f;
+    --popover: #1e1e26;
+    --ring: #1b1b22;
+}
+
+h2 {
+    margin: 0;
+    font: 600 12px/1 var(--font);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
