@@ -15,7 +15,7 @@ function extensionProblemPanel() {
         return panel("globe", "Reload the browser extension",
             h("p", { class: "lead", text: "Your browser is still running an older copy of the RPC Manager extension, so it may show the wrong things." }),
             h("ol", { class: "steps" },
-                h("li", {}, "Open ", h("code", { text: "vivaldi://extensions" }), " (or chrome://, edge://, brave://extensions)."),
+                h("li", {}, "Open ", h("code", { text: "chrome://extensions" }), " (or edge://, brave://, vivaldi://extensions)."),
                 h("li", {}, "Click the reload arrow on ", h("b", { text: "RPC Manager Bridge" }), "."),
                 h("li", {}, "That's it: tabs you already have open pick it up on their own and keep playing.")
             )
@@ -24,7 +24,7 @@ function extensionProblemPanel() {
     return panel("globe", "Browser extension isn't connected",
         h("p", { class: "lead", text: "Sites only show up while the RPC Manager extension is running in your browser. If it's already installed, it reconnects by itself within about 30 seconds. To install it:" }),
         h("ol", { class: "steps" },
-            h("li", {}, "Open ", h("code", { text: "vivaldi://extensions" }), " (or chrome://, edge://, brave://extensions)."),
+            h("li", {}, "Open ", h("code", { text: "chrome://extensions" }), " (or edge://, brave://, vivaldi://extensions)."),
             h("li", {}, "Turn on ", h("b", { text: "Developer mode" }), " (top right)."),
             h("li", {}, "Click ", h("b", { text: "Load unpacked" }), " and choose this folder:")
         ),

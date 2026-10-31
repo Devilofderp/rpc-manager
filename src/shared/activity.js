@@ -7,7 +7,7 @@ export const TYPES = [
     { value: 5, label: "Competing", verb: "Competing in" }
 ];
 
-export const STATUS_DISPLAY = { name: 0, state: 1, details: 2 };
+const STATUS_DISPLAY = { name: 0, state: 1, details: 2 };
 
 export const TIMERS = [
     { value: "none", label: "None" },

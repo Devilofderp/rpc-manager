@@ -5,7 +5,7 @@ import { randomUUID } from "node:crypto";
 
 const OP = { HANDSHAKE: 0, FRAME: 1, CLOSE: 2, PING: 3, PONG: 4 };
 
-export const pipePath = index => `\\\\?\\pipe\\discord-ipc-${index}`;
+const pipePath = index => `\\\\?\\pipe\\discord-ipc-${index}`;
 
 export class RpcClient {
     constructor(clientId) {

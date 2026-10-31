@@ -5,7 +5,7 @@ import fs from "node:fs";
 import { WebSocketServer } from "ws";
 
 // RPC_MANAGER_BRIDGE_PORT lets a test copy run beside the real one.
-export const BRIDGE_PORT = Number(process.env.RPC_MANAGER_BRIDGE_PORT) || 47833;
+const BRIDGE_PORT = Number(process.env.RPC_MANAGER_BRIDGE_PORT) || 47833;
 const EXTENSION_ORIGIN = /^(chrome|moz)-extension:\/\//;
 
 export class Bridge extends EventEmitter {

@@ -1,8 +1,7 @@
 // Presets live in presets.json in the app's data folder (%APPDATA%\RPC Manager).
 import fs from "node:fs";
 import path from "node:path";
-import { newPreset, newSitePreset } from "../shared/activity.js";
-import { SITES } from "../shared/sites.js";
+import { newPreset } from "../shared/activity.js";
 
 const CUSTOM_RPC_SOURCES = ["Equicord", "Vencord"];
 
@@ -18,12 +17,7 @@ export class Store {
             const data = JSON.parse(fs.readFileSync(this.file, "utf8"));
             this.prefs = data.prefs ?? {};
             // Fill in fields added in later versions.
-            const presets = data.presets.filter(p => p.kind !== "browser").map(p => newPreset(p));
-            // The old single "Browser" entry becomes one preset per site, at the top,
-            // so what you're watching shows above custom presets.
-            const browser = data.presets.find(p => p.kind === "browser");
-            if (browser) presets.unshift(...["youtube", "reanime"].map(site => newSitePreset(site, SITES[site].name, { active: browser.active })));
-            return presets;
+            return data.presets.map(p => newPreset(p));
         } catch (err) {
             if (err.code !== "ENOENT") console.error("could not read presets", err);
             return importCustomRpc();

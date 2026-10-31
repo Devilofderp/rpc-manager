@@ -1,8 +1,8 @@
 // Keeps Discord showing exactly the active presets, in list order.
 //
-// Each active preset gets its own RPC connection. Phase 1 showed that the
-// newest activity is listed first and wins the member-list line, so presets are
-// sent bottom to top: the top preset is always sent last.
+// Each active preset gets its own RPC connection. Discord lists the newest activity
+// first and gives it the member-list line, so presets are sent bottom to top:
+// the top preset is always sent last.
 import { EventEmitter } from "node:events";
 import { ARRPC_USER_ID, runningClient } from "./clients.js";
 import { RpcClient } from "./rpc-client.js";
