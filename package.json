@@ -1,8 +1,11 @@
 {
   "name": "rpc-manager",
   "productName": "RPC Manager",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Custom Discord Rich Presence presets with a live preview",
+  "author": "Devilofderp",
+  "homepage": "https://github.com/Devilofderp/rpc-manager",
+  "repository": "github:Devilofderp/rpc-manager",
   "private": true,
   "type": "module",
   "main": "src/main/main.js",
@@ -59,8 +62,9 @@
       "icon": "src/assets/atom.ico"
     },
     "nsis": {
-      "oneClick": true,
+      "oneClick": false,
       "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
       "shortcutName": "RPC Manager",
       "artifactName": "RPC-Manager-Setup-${version}.${ext}"
     },
