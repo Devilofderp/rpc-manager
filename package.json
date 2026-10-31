@@ -11,7 +11,7 @@
     "icon": "node tools/make-icon.mjs",
     "shortcut": "electron tools/install-shortcut.mjs",
     "dist": "electron-builder --win",
-    "release": "electron-builder --win --publish always"
+    "release": "npm run dist && node tools/release.mjs"
   },
   "devDependencies": {
     "electron": "45.1.0",
@@ -67,8 +67,7 @@
     "publish": {
       "provider": "github",
       "owner": "Devilofderp",
-      "repo": "rpc-manager",
-      "releaseType": "release"
+      "repo": "rpc-manager"
     }
   }
 }
