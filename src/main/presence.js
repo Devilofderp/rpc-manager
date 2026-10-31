@@ -107,6 +107,7 @@ export class Presence extends EventEmitter {
     async connectStatus() {
         clearTimeout(this.retryTimer);
         const appId = BUILT_IN_APP_ID;
+        let blocked = false;
         for (let pipe = 0; pipe < 10; pipe++) {
             const client = new RpcClient(appId);
             try {
@@ -118,11 +119,13 @@ export class Presence extends EventEmitter {
                 this.emitChange();
                 this.schedule();
                 return;
-            } catch {
+            } catch (err) {
+                blocked ||= err.code === "EPERM" || err.code === "EACCES";
                 client.close();
             }
         }
-        this.status = { state: "offline", user: null };
+        // Windows refuses the pipe of a Discord that's running as administrator.
+        this.status = { state: "offline", user: null, blocked };
         this.markWaiting();
         this.retryTimer = setTimeout(() => this.connectStatus(), RETRY_MS);
     }

@@ -113,7 +113,7 @@ function avatarUrl(user) {
 }
 
 function renderConnection() {
-    const { state, user } = presence.status;
+    const { state, user, blocked } = presence.status;
     const el = document.getElementById("connection");
     el.className = `connection ${state}`;
     if (state === "connected") {
@@ -122,9 +122,10 @@ function renderConnection() {
             h("span", { text: `Connected as ${user.global_name || user.username}` })
         );
     } else {
+        const offline = blocked ? "Discord is running as admin: reopen it normally" : "Discord isn't running";
         el.replaceChildren(
             h("span", { class: "dot" }),
-            h("span", { text: state === "offline" ? "Discord isn't running" : "Looking for Discord…" })
+            h("span", { text: state === "offline" ? offline : "Looking for Discord…" })
         );
     }
 }
