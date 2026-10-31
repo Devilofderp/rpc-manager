@@ -105,3 +105,7 @@ tools/                icon, shortcut and release scripts
 3. Run `npm run release`.
 
 Installed copies pick up the new version by themselves.
+
+## License
+
+[MIT](LICENSE)

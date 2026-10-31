@@ -4,6 +4,7 @@
   "version": "0.3.0",
   "description": "Custom Discord Rich Presence presets with a live preview",
   "author": "Devilofderp",
+  "license": "MIT",
   "homepage": "https://github.com/Devilofderp/rpc-manager",
   "repository": "github:Devilofderp/rpc-manager",
   "private": true,
