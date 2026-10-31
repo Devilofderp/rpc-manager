@@ -4,6 +4,7 @@
 // newest activity is listed first and wins the member-list line, so presets are
 // sent bottom to top: the top preset is always sent last.
 import { EventEmitter } from "node:events";
+import { ARRPC_USER_ID, runningClient } from "./clients.js";
 import { RpcClient } from "./discord-ipc.js";
 import { appIdOf, blockingErrors, buildActivity, BUILT_IN_APP_ID, sanitizeBrowserActivity, validate } from "../shared/activity.js";
 
@@ -112,10 +113,13 @@ export class Presence extends EventEmitter {
             const client = new RpcClient(appId);
             try {
                 const { user } = await client.connect(pipe);
+                const standIn = user.id === ARRPC_USER_ID;
+                const via = standIn ? (await runningClient())?.name ?? "your Discord app" : null;
+                if (client.closed) continue;
                 this.pipe = pipe;
                 this.statusClient = client;
                 client.onClose = () => this.lost();
-                this.status = { state: "connected", user };
+                this.status = { state: "connected", user: standIn ? null : user, via };
                 this.emitChange();
                 this.schedule();
                 return;
@@ -125,7 +129,8 @@ export class Presence extends EventEmitter {
             }
         }
         // Windows refuses the pipe of a Discord that's running as administrator.
-        this.status = { state: "offline", user: null, blocked };
+        const modded = blocked ? null : await runningClient();
+        this.status = { state: "offline", user: null, blocked, modded };
         this.markWaiting();
         this.retryTimer = setTimeout(() => this.connectStatus(), RETRY_MS);
     }

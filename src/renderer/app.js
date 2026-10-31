@@ -112,21 +112,24 @@ function avatarUrl(user) {
     return `https://cdn.discordapp.com/embed/avatars/${Number((BigInt(user.id) >> 22n) % 6n)}.png`;
 }
 
+function connectionText({ state, blocked, modded, via }) {
+    if (state === "connected") return `Connected through ${via}`;
+    if (state !== "offline") return "Looking for Discord…";
+    if (blocked) return "Discord is running as admin: reopen it normally";
+    return modded ? `${modded.name} is open: ${modded.fix}` : "Discord isn't running";
+}
+
 function renderConnection() {
-    const { state, user, blocked } = presence.status;
+    const { state, user } = presence.status;
     const el = document.getElementById("connection");
     el.className = `connection ${state}`;
-    if (state === "connected") {
+    if (user) {
         el.replaceChildren(
             h("img", { class: "avatar", src: avatarUrl(user), alt: "" }),
             h("span", { text: `Connected as ${user.global_name || user.username}` })
         );
     } else {
-        const offline = blocked ? "Discord is running as admin: reopen it normally" : "Discord isn't running";
-        el.replaceChildren(
-            h("span", { class: "dot" }),
-            h("span", { text: state === "offline" ? offline : "Looking for Discord…" })
-        );
+        el.replaceChildren(h("span", { class: "dot" }), h("span", { text: connectionText(presence.status) }));
     }
 }
 

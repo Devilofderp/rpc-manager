@@ -220,10 +220,13 @@ async function maybeSnapshot() {
             await win.webContents.executeJavaScript(fs.readFileSync(script.slice("--snapshot-js=".length), "utf8"));
             await new Promise(resolve => setTimeout(resolve, 600));
         }
-        const image = await win.webContents.capturePage();
-        fs.writeFileSync(arg.slice("--snapshot=".length), image.toPNG());
-        quitting = true;
-        app.quit();
+        try {
+            const image = await win.webContents.capturePage();
+            fs.writeFileSync(arg.slice("--snapshot=".length), image.toPNG());
+        } finally {
+            quitting = true;
+            app.quit();
+        }
     });
 }
 

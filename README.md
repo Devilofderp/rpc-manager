@@ -4,7 +4,7 @@ A Windows tray app for Discord Rich Presence. Keep several custom activities liv
 
 ## Install
 
-Download the latest `RPC-Manager-Setup` file from [Releases](../../releases/latest) and open it. You need the Discord desktop app. Updates install themselves.
+Download the latest `RPC-Manager-Setup` file from [Releases](../../releases/latest) and open it. You need a Discord app on your PC, not Discord in a browser. Modded clients work too, and RPC Manager says if one needs a setting turned on. Updates install themselves.
 
 ## Build
 

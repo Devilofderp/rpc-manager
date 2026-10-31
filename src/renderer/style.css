@@ -287,6 +287,7 @@ svg {
     justify-content: flex-end;
     margin-top: 6px;
 }
+.connection.connected .dot { background: var(--live); }
 .connection.offline .dot { background: var(--danger); }
 .connection.connecting .dot { background: var(--busy); animation: pulse 1.2s ease-in-out infinite; }
 
