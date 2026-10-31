@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 280px;
+            margin: 0;
+            padding: 14px;
+            background: #17171d;
+            color: #ececf2;
+            font: 13px/1.45 "Segoe UI", system-ui, sans-serif;
+        }
+        .head { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .head img { width: 20px; height: 20px; }
+        .status { display: flex; align-items: center; gap: 7px; margin: 12px 0; color: #a3a3b4; font-size: 12.5px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #f2545b; }
+        .dot.on { background: #3fcf8e; }
+        .card { display: flex; gap: 10px; padding: 10px; border-radius: 10px; background: #232428; margin-bottom: 8px; }
+        .card img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+        .card .lines { min-width: 0; }
+        .card .top { font-size: 11px; font-weight: 700; color: #dbdee1; }
+        .card .details { font-weight: 700; }
+        .card .top, .card .details, .card .state { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .card .state { color: #b5bac1; font-size: 12px; }
+        .empty { color: #6e6e80; font-size: 12.5px; }
+        .head { justify-content: space-between; }
+        .head span { display: flex; align-items: center; gap: 8px; }
+        #refresh {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 28px;
+            padding: 0 10px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ececf2;
+            font: 500 12.5px "Segoe UI", system-ui, sans-serif;
+            cursor: pointer;
+        }
+        #refresh:hover { background: rgba(255, 255, 255, 0.1); }
+        .update {
+            margin: 0 0 12px;
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(240, 178, 50, 0.12);
+            border: 1px solid rgba(240, 178, 50, 0.35);
+            font-size: 12.5px;
+            line-height: 1.45;
+        }
+        .update[hidden] { display: none; }
+        #open-extensions {
+            display: block;
+            margin-top: 8px;
+            height: 28px;
+            padding: 0 10px;
+            border: none;
+            border-radius: 8px;
+            background: #f0b232;
+            color: #111;
+            font: 600 12.5px "Segoe UI", system-ui, sans-serif;
+            cursor: pointer;
+        }
+        #refresh svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <span><img src="icon.png" alt="">RPC Manager</span>
+        <button id="refresh" type="button" title="Reconnect to the RPC Manager app">
+            <svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg>
+            Reconnect
+        </button>
+    </div>
+    <div class="status"><span class="dot" id="dot"></span><span id="status">Checking…</span></div>
+    <div class="update" id="update" hidden>
+        <b>Update ready.</b> The app has a newer copy of this extension. Click the reload arrow on
+        <b>RPC Manager Bridge</b> in your extensions page; open tabs keep playing.
+        <button id="open-extensions" type="button">Open extensions page</button>
+    </div>
+    <div id="now"></div>
+    <script src="popup.js"></script>
+</body>
+</html>

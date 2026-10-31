@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+    <title>RPC Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <header class="titlebar">
+        <div class="brand">
+            <img class="brand-mark" src="../assets/icon.png" alt="">
+            <span>RPC Manager</span>
+        </div>
+        <div class="connection" id="connection"></div>
+        <button class="button primary small" id="update-button" type="button" hidden>Restart to update</button>
+        <button class="icon-button" id="settings-button" type="button" title="Settings"></button>
+    </header>
+
+    <main class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-head">
+                <h2>Presets</h2>
+                <button class="button primary small" id="new-preset" type="button">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+                    New
+                </button>
+            </div>
+            <p class="sidebar-hint">Drag to reorder. The highest active preset is the one people see first.</p>
+            <ol class="preset-list" id="preset-list"></ol>
+        </aside>
+
+        <section class="editor" id="editor"></section>
+
+        <aside class="preview-pane">
+            <h2>How others see it</h2>
+            <div id="preview"></div>
+        </aside>
+    </main>
+</body>
+</html>

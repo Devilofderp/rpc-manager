@@ -1,0 +1,74 @@
+{
+  "name": "rpc-manager",
+  "productName": "RPC Manager",
+  "version": "0.2.0",
+  "description": "Custom Discord Rich Presence presets with a live preview",
+  "private": true,
+  "type": "module",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "icon": "node tools/make-icon.mjs",
+    "shortcut": "electron tools/install-shortcut.mjs",
+    "dist": "electron-builder --win",
+    "release": "electron-builder --win --publish always"
+  },
+  "devDependencies": {
+    "electron": "45.1.0",
+    "electron-builder": "26.18.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.11",
+    "koffi": "^2.16.3",
+    "ws": "^8.22.0"
+  },
+  "build": {
+    "appId": "RPCManager.Desktop",
+    "electronDist": "node_modules/electron/dist",
+    "electronLanguages": [
+      "en-US"
+    ],
+    "files": [
+      "src/**/*",
+      "package.json",
+      "!node_modules/koffi/build/koffi/!(win32_x64)/**",
+      "!node_modules/koffi/{src,vendor,doc}/**"
+    ],
+    "asarUnpack": [
+      "src/assets/**"
+    ],
+    "extraResources": [
+      {
+        "from": "extension",
+        "to": "extension"
+      }
+    ],
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "src/assets/atom.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "shortcutName": "RPC Manager",
+      "artifactName": "RPC-Manager-Setup-${version}.${ext}"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Devilofderp",
+      "repo": "rpc-manager",
+      "releaseType": "release"
+    }
+  }
+}

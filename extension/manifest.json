@@ -1,0 +1,60 @@
+{
+    "manifest_version": 3,
+    "name": "RPC Manager Bridge",
+    "version": "0.7.0",
+    "description": "Shows what you're watching on the sites you pick on your Discord profile, through the RPC Manager app.",
+    "icons": { "128": "icon.png" },
+    "action": {
+        "default_title": "RPC Manager",
+        "default_popup": "popup.html",
+        "default_icon": { "128": "icon.png" }
+    },
+    "background": { "service_worker": "background.js" },
+    "permissions": ["alarms", "scripting"],
+    "host_permissions": [
+        "https://kitsu.io/*",
+        "https://graphql.anilist.co/*",
+        "https://api.tvmaze.com/*",
+        "https://v3.sg.media-imdb.com/*",
+        "https://www.youtube.com/*",
+        "https://www.hulu.com/*",
+        "https://reanime.to/*",
+        "https://reanime.cz/*",
+        "https://flixcloud.cc/*",
+        "https://*.flixcloud.cc/*",
+        "https://kwik.si/*",
+        "https://*.kwik.si/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://reanime.to/*", "https://reanime.cz/*"],
+            "js": ["sites/reanime.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.youtube.com/*"],
+            "js": ["sites/youtube.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.hulu.com/*"],
+            "js": ["sites/hulu.js"],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://www.youtube.com/*",
+                "https://www.hulu.com/*",
+                "https://reanime.to/*",
+                "https://reanime.cz/*",
+                "https://flixcloud.cc/*",
+                "https://*.flixcloud.cc/*",
+                "https://kwik.si/*",
+                "https://*.kwik.si/*"
+            ],
+            "js": ["player.js"],
+            "all_frames": true,
+            "run_at": "document_idle"
+        }
+    ]
+}
