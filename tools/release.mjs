@@ -9,7 +9,7 @@ const { version } = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const label = version.replace(/\.0$/, "");
 const installer = `dist/RPC-Manager-Setup-${label}.exe`;
 
-await build({ config: { nsis: { artifactName: `RPC-Manager-Setup-${label}.\${ext}` } } });
+await build({ publish: "never", config: { nsis: { artifactName: `RPC-Manager-Setup-${label}.\${ext}` } } });
 
 execFileSync("gh", ["release", "create", `v${label}`, installer, `${installer}.blockmap`, "dist/latest.yml",
     "--title", label, "--notes", ""], { stdio: "inherit" });
