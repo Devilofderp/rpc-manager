@@ -1,5 +1,5 @@
 // Sites the browser extension can read. Each one you add becomes a preset in the
-// list; what it shows is fixed by the site's script in extension/sites/.
+// list; what it shows is fixed by the site's script in extension/content/sites/.
 
 export const SITES = {
     youtube: {
@@ -20,6 +20,28 @@ export const SITES = {
             assets: { large_image: "https://yt3.ggpht.com/uI3VE4PVqvCy0xnWLqMJnEzyBUm3T8VHOCp4ee-1RxdHqKXCdUE_qXYQnpf9AfuEoIPactVyDhM=s240-c-k-c0x00ffffff-no-rj" },
             buttons: [{ label: "Watch on YouTube" }, { label: "View Channel" }],
             timestamps: { start: -5_000, end: 14_000 }
+        }
+    },
+    twitch: {
+        name: "Twitch",
+        icon: "../assets/sites/twitch.png",
+        domains: ["twitch.tv"],
+        shows: [
+            "Watching <streamer>",
+            "<stream title>",
+            "<category>",
+            "Picture: the streamer's profile picture",
+            "Time since you started watching, or a progress bar on a past broadcast",
+            "Button: Watch on Twitch, plus View Channel on a past broadcast"
+        ],
+        example: {
+            type: 3,
+            name: "Twitch",
+            details: "Just Chatting with the community",
+            state: "Just Chatting",
+            assets: { large_image: "https://static-cdn.jtvnw.net/jtv_user_pictures/7db44749-286f-4db0-9c99-574b16170d44-profile_image-300x300.png" },
+            buttons: [{ label: "Watch on Twitch" }],
+            timestamps: { start: -1_260_000 }
         }
     },
     hulu: {

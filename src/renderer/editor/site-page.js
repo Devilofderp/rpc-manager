@@ -44,7 +44,7 @@ export function renderSiteEditor(preset, entering) {
     const now = Date.now();
     const example = site && {
         ...site.example,
-        timestamps: { start: now + site.example.timestamps.start, end: now + site.example.timestamps.end }
+        timestamps: { start: now + site.example.timestamps.start, end: site.example.timestamps.end && now + site.example.timestamps.end }
     };
 
     const inner = h("div", { class: "editor-inner" },
