@@ -31,7 +31,7 @@ export const SITES = {
             "<stream title>",
             "<category>",
             "Picture: the streamer's profile picture",
-            "Time since you started watching, or a progress bar on a past broadcast",
+            "How long the stream has been live, or a progress bar on a past broadcast",
             "Button: Watch on Twitch, plus View Channel on a past broadcast"
         ],
         example: {

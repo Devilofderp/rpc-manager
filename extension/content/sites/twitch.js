@@ -15,6 +15,24 @@
         return /^https:\/\/static-cdn\.jtvnw\.net\//.test(src) ? src.replace(/-\d+x\d+(\.\w+)$/, "-300x300$1") : FALLBACK_PICTURE;
     }
 
+    // When the stream began, from the uptime on the page. A hidden tab's clock lags, so the first
+    // reading stands unless it's far enough off that the stream must have restarted.
+    let began = { login: null, at: 0 };
+
+    function streamStart(box, login) {
+        const uptime = textOf(box, '.live-time [aria-hidden="true"]').match(/^(?:(\d+):)?(\d+):(\d\d)$/);
+        if (!uptime) return undefined;
+        const at = Date.now() - (Number(uptime[1] ?? 0) * 3600 + Number(uptime[2]) * 60 + Number(uptime[3])) * 1000;
+        if (began.login !== login || Math.abs(at - began.at) > 300_000) began = { login, at };
+        return began.at;
+    }
+
+    // The exact start time in the page's tags, which are only right for the channel it was loaded on.
+    function taggedStart() {
+        const tags = [...document.querySelectorAll('script[type="application/ld+json"]')].map(el => el.textContent).join();
+        return Date.parse(tags.match(/"startDate":"([^"]+)"/)?.[1]) || undefined;
+    }
+
     function liveStream(login) {
         const box = document.querySelector("#live-channel-stream-information");
         const name = box && textOf(box, `a[href="/${login}" i] h1`);
@@ -24,7 +42,8 @@
                 name,
                 details: textOf(box, '[data-a-target="stream-title"]') || undefined,
                 state: textOf(box, '[data-a-target="stream-game-link"]') || undefined,
-                largeImage: picture(box, login)
+                largeImage: picture(box, login),
+                streamStart: streamStart(box, login)
             };
         }
         // The bar can fill in late on a fresh page load. The page's tags describe the stream until
@@ -34,7 +53,8 @@
                 name: meta("og:title").replace(/ - Live on Twitch$/, ""),
                 // "<stream title> | Streaming <category> for <number> viewers.", and sometimes less.
                 details: clean(meta("og:description")).replace(/\s*\|\s*Streaming [^|]*$/, "") || undefined,
-                largeImage: meta("og:image") || FALLBACK_PICTURE
+                largeImage: meta("og:image") || FALLBACK_PICTURE,
+                streamStart: taggedStart()
             };
         }
         return null;

@@ -22,7 +22,7 @@ function playbackStamps(player, now) {
 
 // A site that knows the real position itself (Hulu, where ads are part of the video).
 function pageStamps(page, pageAt, player, now) {
-    if (page.live) return { start: player.startedAt || now };
+    if (page.live) return { start: page.streamStart || player.startedAt || now };
     if (!page.position) return playbackStamps(player, now);
     const start = pageAt - page.position.current * 1000;
     return { start, end: start + page.position.duration * 1000 };
