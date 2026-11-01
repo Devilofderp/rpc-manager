@@ -1,7 +1,7 @@
 {
   "name": "rpc-manager",
   "productName": "RPC Manager",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Custom Discord Rich Presence presets with a live preview",
   "author": "Devilofderp",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "icon": "node tools/make-icon.mjs",
     "shortcut": "electron tools/install-shortcut.mjs",
     "dist": "electron-builder --win",
-    "release": "npm run dist && node tools/release.mjs"
+    "release": "node tools/release.mjs"
   },
   "devDependencies": {
     "electron": "45.1.0",
