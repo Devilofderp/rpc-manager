@@ -15,8 +15,9 @@
         return out;
     }
 
-    // Calls and webcams are live camera streams, not something you're watching.
-    const usable = media => !media.srcObject && (media.currentSrc || media.src);
+    // Calls and webcams are live camera streams, not something you're watching. Twitch's
+    // player feeds its video from a worker, which also comes through srcObject.
+    const usable = media => media.srcObject ? !(media.srcObject instanceof MediaStream) : media.currentSrc || media.src;
 
     const lengthOf = media => Number.isFinite(media.duration) && media.duration > 0 ? media.duration : 0;
 
