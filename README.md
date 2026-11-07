@@ -3,7 +3,7 @@
 A Windows tray app for Discord Rich Presence. Keep several custom activities live at once, drag them into the order you want, and show what you're watching in your browser.
 
 - **Custom presets:** name, text, images, buttons, timers and activity type, with no Developer Portal setup needed.
-- **Sites:** YouTube, Twitch, Hulu and ReANIME, through a small browser extension. They only show while a video is actually playing.
+- **Sites:** YouTube, Twitch, Hulu, Prime Video and ReANIME, through a small browser extension. They only show while a video is actually playing.
 - **Live preview** of your profile and member list as others see it.
 - **Themes:** accent color, OLED black, dark gray, a custom color, or see-through glass.
 - **Updates itself** from the releases on this page.

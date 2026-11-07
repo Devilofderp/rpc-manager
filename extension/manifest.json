@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "RPC Manager Bridge",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "Shows what you're watching on the sites you pick on your Discord profile, through the RPC Manager app.",
     "icons": { "128": "icon.png" },
     "action": {
@@ -19,6 +19,8 @@
         "https://www.youtube.com/*",
         "https://www.twitch.tv/*",
         "https://www.hulu.com/*",
+        "https://www.primevideo.com/*",
+        "https://www.amazon.com/gp/video/*",
         "https://reanime.to/*",
         "https://reanime.cz/*",
         "https://flixcloud.cc/*",
@@ -48,10 +50,17 @@
             "run_at": "document_idle"
         },
         {
+            "matches": ["https://www.primevideo.com/*", "https://www.amazon.com/gp/video/*"],
+            "js": ["content/sites/primevideo.js"],
+            "run_at": "document_idle"
+        },
+        {
             "matches": [
                 "https://www.youtube.com/*",
                 "https://www.twitch.tv/*",
                 "https://www.hulu.com/*",
+                "https://www.primevideo.com/*",
+                "https://www.amazon.com/gp/video/*",
                 "https://reanime.to/*",
                 "https://reanime.cz/*",
                 "https://flixcloud.cc/*",

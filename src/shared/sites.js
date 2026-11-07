@@ -66,6 +66,28 @@ export const SITES = {
             timestamps: { start: -754_000, end: 1_310_000 }
         }
     },
+    primevideo: {
+        name: "Prime Video",
+        icon: "../assets/sites/primevideo.png",
+        domains: ["primevideo.com", "amazon.com/gp/video"],
+        shows: [
+            "Watching <show or movie>",
+            "<episode name>",
+            "Season <number> · Episode <number>",
+            "Progress bar while it plays (Prime's opening jingle and any ads count toward it)",
+            "Poster: looked up by title (TVmaze for shows, IMDb for movies), otherwise the title's artwork",
+            "Button: Watch on Prime Video"
+        ],
+        example: {
+            type: 3,
+            name: "The Boys",
+            details: "The Name of the Game",
+            state: "Season 1 · Episode 1",
+            assets: { large_image: "https://static.tvmaze.com/uploads/images/original_untouched/619/1547768.jpg" },
+            buttons: [{ label: "Watch on Prime Video" }],
+            timestamps: { start: -1_380_000, end: 2_220_000 }
+        }
+    },
     reanime: {
         name: "ReANIME",
         icon: "../assets/sites/reanime.png",
