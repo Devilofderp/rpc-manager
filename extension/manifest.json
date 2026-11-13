@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "RPC Manager Bridge",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "Shows what you're watching on the sites you pick on your Discord profile, through the RPC Manager app.",
     "icons": { "128": "icon.png" },
     "action": {
@@ -21,6 +21,7 @@
         "https://www.hulu.com/*",
         "https://www.primevideo.com/*",
         "https://www.amazon.com/gp/video/*",
+        "https://www.disneyplus.com/*",
         "https://reanime.to/*",
         "https://reanime.cz/*",
         "https://reanime.wtf/*",
@@ -56,12 +57,24 @@
             "run_at": "document_idle"
         },
         {
+            "matches": ["https://www.disneyplus.com/*"],
+            "js": ["content/sites/disneyplus-player.js"],
+            "world": "MAIN",
+            "run_at": "document_idle"
+        },
+        {
+            "matches": ["https://www.disneyplus.com/*"],
+            "js": ["content/sites/disneyplus.js"],
+            "run_at": "document_idle"
+        },
+        {
             "matches": [
                 "https://www.youtube.com/*",
                 "https://www.twitch.tv/*",
                 "https://www.hulu.com/*",
                 "https://www.primevideo.com/*",
                 "https://www.amazon.com/gp/video/*",
+                "https://www.disneyplus.com/*",
                 "https://reanime.to/*",
                 "https://reanime.cz/*",
                 "https://reanime.wtf/*",

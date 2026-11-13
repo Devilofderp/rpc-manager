@@ -35,7 +35,8 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
         for (const tab of open) {
             chrome.scripting.executeScript({
                 target: { tabId: tab.id, allFrames: Boolean(script.all_frames) },
-                files: script.js
+                files: script.js,
+                world: script.world ?? "ISOLATED"
             }).catch(() => {});
         }
     }

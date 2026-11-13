@@ -88,6 +88,28 @@ export const SITES = {
             timestamps: { start: -1_380_000, end: 2_220_000 }
         }
     },
+    disneyplus: {
+        name: "Disney+",
+        icon: "../assets/sites/disneyplus.png",
+        domains: ["disneyplus.com"],
+        shows: [
+            "Watching <show or movie>",
+            "<episode name>",
+            "Season <number> · Episode <number>",
+            "Progress bar from Disney+'s own timeline (ads don't throw it off)",
+            "Poster: Disney+'s own artwork",
+            "Button: Watch on Disney+"
+        ],
+        example: {
+            type: 3,
+            name: "Andor",
+            details: "Kassa",
+            state: "Season 1 · Episode 1",
+            assets: { large_image: "https://static-assets.bamgrid.com/product/disneyplus/favicons/disPlus-favicon-180x180.7d56f648dc95f591721935193bc827cb.png" },
+            buttons: [{ label: "Watch on Disney+" }],
+            timestamps: { start: -1_260_000, end: 2_400_000 }
+        }
+    },
     reanime: {
         name: "ReANIME",
         icon: "../assets/sites/reanime.png",

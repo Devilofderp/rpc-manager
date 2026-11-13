@@ -1,6 +1,6 @@
 # RPC Manager
 
-A Windows app for your Discord status. Show custom activities, several at once, and what you're watching on YouTube, Twitch, Hulu, Prime Video and ReANIME.
+A Windows app for your Discord status. Show custom activities, several at once, and what you're watching on YouTube, Twitch, Hulu, Prime Video, Disney+ and ReANIME.
 
 ## Install
 
@@ -36,6 +36,7 @@ Click **New** and pick a site. It shows on your profile only while a video is ac
 | Twitch | The streamer, the stream title, the category and how long they've been live |
 | Hulu | The show or movie, the episode, and the season and episode number |
 | Prime Video | The show or movie, the episode, and the season and episode number |
+| Disney+ | The show or movie, the episode, and the season and episode number |
 | ReANIME | The anime, the episode name, the episode number, and a link to it on AniList. The site itself is never named. |
 
 Sites need the RPC Manager browser extension. It works in Chrome, Edge, Brave and Vivaldi:

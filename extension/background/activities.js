@@ -5,7 +5,7 @@ import { lookup } from "./lookups.js";
 import { posterFor } from "./posters.js";
 import { dropQuietTabs, pick } from "./tabs.js";
 
-const SITE_IDS = ["youtube", "twitch", "hulu", "primevideo", "reanime"];
+const SITE_IDS = ["youtube", "twitch", "hulu", "primevideo", "disneyplus", "reanime"];
 const DRIFT_MS = 3000;      // playback jitter smaller than this doesn't resend the progress bar
 const LOOKUP_WAIT_MS = 3000; // how long a new episode waits for its name and links before showing anyway
 const KEEP = Symbol("keep");
