@@ -1,7 +1,7 @@
 {
   "name": "rpc-manager",
   "productName": "RPC Manager",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Custom Discord Rich Presence presets with a live preview",
   "author": "Devilofderp",
   "license": "MIT",
