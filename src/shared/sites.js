@@ -91,7 +91,7 @@ export const SITES = {
     reanime: {
         name: "ReANIME",
         icon: "../assets/sites/reanime.png",
-        domains: ["reanime.to", "reanime.cz"],
+        domains: ["reanime.to", "reanime.cz", "reanime.wtf"],
         shows: [
             "Watching <anime>",
             "<episode name>, looked up on Kitsu or AniList",

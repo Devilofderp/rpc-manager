@@ -1,4 +1,4 @@
-// Re:ANIME (reanime.to / reanime.cz): describes the episode on a watch page.
+// Re:ANIME (reanime.to / reanime.cz / reanime.wtf): describes the episode on a watch page.
 // Other pages (home, search, an anime's page) report nothing, and the site's
 // own name never appears. The background only shows it while the video plays.
 // The page selectors follow PreMiD's open-source ReAnime activity (MPL-2.0).
